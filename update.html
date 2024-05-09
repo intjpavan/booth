@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,8 +86,9 @@
 <body>
     <div class="container">
         <h1>Booth No</h1>
-        <form action="update.php" method="post">
+        <form action="" method="post">
             <label for="votersno">Voter's Number:</label>
+            <input type="hidden" name="boothno" value="<?php echo $_GET['boothno']; ?>">
             <input type="number" id="votersno" name="votersno" required><br><br>
 
             <label for="status">Status:</label>
@@ -110,3 +113,6 @@
             }, 2000);
         }
     </script>
+
+</body>
+</html>

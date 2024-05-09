@@ -1,40 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php 
+<?php
 include 'db.php';
 include 'boothnumber.php';
-
-
 include 'update.html';
+?>
 
+<?php
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $boothno = $_POST['boothno'];
+    $votersno = $_POST['votersno'];
+    $status = $_POST['status'];
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $votersno = $_POST['votersno'];
-        $status = $_POST['status'];
+    // Prepare the SQL statement
+    $sql = "UPDATE booth$boothno SET status = ? WHERE votersno = ?";
+    $stmt = $conn->prepare($sql);
 
-        $sql = "UPDATE booth$boothNumber SET status = ? WHERE votersno = ?";
-
-        $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        // Bind parameters to the prepared statement
         $stmt->bind_param("is", $status, $votersno);
 
+        // Execute the prepared statement
         if ($stmt->execute()) {
             echo "<script>showSuccessMessage();</script>";
         } else {
             echo "Error updating record: " . $stmt->error;
         }
 
+        // Close the prepared statement
         $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $conn->error;
     }
+}
 
-    $conn->close();
-    ?>
-</body>
-</html>
+// Close the database connection
+$conn->close();
+?>

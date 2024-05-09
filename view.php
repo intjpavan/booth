@@ -157,8 +157,13 @@ if ($result->num_rows > 0) {
       
 
     {
-        $className = ($row['status'] == 1) ? "grid-item-red" : "grid-item";
-        echo '<div class="' . $className . '">' . $row["votersno"] . '</div>';
+       // $className = ($row['status'] == 1) ? "grid-item-red" : "grid-item";
+      //echo '<div class="' . $className . '">' . $row["votersno"] . '</div>';
+
+      if ( $row['status'] == 0 )
+      { 
+        echo '<div class="grid-item">' . $row["votersno"] . '</div>';
+      }
         
     }
 } 
