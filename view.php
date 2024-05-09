@@ -4,19 +4,19 @@
 <meta http-equiv="refresh" content="3">
 
 
-<title>Voters Status Booth
+<title>
 <?php 
+
 // Database configuration
 include 'db.php';
 include 'boothnumber.php';
-//$servername = "localhost"; // or your database server
-//$username = "root"; // your database username
-//$password = ""; // your database password
-//$dbname = "darsi_booths"; // your database name
+include 'mim.php';
 
-// Create connection
+
+checkBoothNumber($boothNumber);
+// a New conn is created
 $conn = new mysqli($servername, $username, $password, $dbname);
-
+checkBoothTable($conn, $boothNumber);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -31,11 +31,12 @@ if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $boothName = $row['boothname'];
     $boothNo = $row['boothno'];
+    echo "Voters Status Booth";
     echo "Booth No: " . $boothNo;
     echo "Booth Name: " . $boothName;
 
 } else {
-    echo "No booth found with the given booth number.";
+    echo "Invalid Booth Number.";
 }
 ?>
 </title>
@@ -131,10 +132,10 @@ if ($result && $result->num_rows > 0) {
 
 <?php 
 // Database configuration
-$servername = "localhost"; // or your database server
-$username = "root";    // your database username
-$password = "";    // your database password
-$dbname = "darsi_booths";    // your database name
+//$servername = "localhost"; // or your database server
+//$username = "root";    // your database username
+//$password = "";    // your database password
+//$dbname = "darsi_booths";    // your database name
 //$boothNumber = 4;
 
 // Create connection
