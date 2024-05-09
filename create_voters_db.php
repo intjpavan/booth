@@ -1,6 +1,9 @@
 <?php
 // Include the database configuration file
 require_once "db.php";
+require_once "mim.php";
+checkBoothNumber($_POST['boothNum']);
+
 
 // Create a new MySQL connection
 $conn = new mysqli($servername, $username, $password);
@@ -23,6 +26,8 @@ $conn->select_db($dbname);
 $boothName = $_POST['boothName'];
 $boothNum = $_POST['boothNum'];
 $numVoters = $_POST['numVoters'];
+
+duplicateBooth($conn, $boothNum);
 
 // Create the table named with the booth number if it doesn't exist
 $tableName = "booth" . $boothNum;
