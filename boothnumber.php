@@ -1,8 +1,12 @@
 
 <?php 
-if (isset($_GET['boothno'])) {
+
+$boothNumber = '5';
+
+/* if (isset($_GET['boothno'])) {
     $boothNumber = $_GET['boothno'];
 } else {
-    $boothNumber = ''; // Set a default value or handle the case when 'boothno' is not provided
-}
+    $boothNumber = '5'; // Set a default value or handle the case when 'boothno' is not provided
+} */
+
 ?>

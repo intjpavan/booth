@@ -9,8 +9,7 @@ function checkBoothNumber($boothNumber) {
         exit;
     }
 }
-//Check for Invalid Booths
-
+//Check for Invalid Booth Numbers
 function checkBoothTable($conn, $boothNumber) {
     $sql = "SHOW TABLES LIKE 'booth$boothNumber'";
     $result = $conn->query($sql);
@@ -29,7 +28,7 @@ function duplicateBooth($conn, $boothNumber) {
 
     if ($result->num_rows  >  0) {
         // Avoid Duplicate Entries
-        echo "Booth Already Exists.";
+        echo "Booth Number Already Exists.";
         exit;
     }
 }
