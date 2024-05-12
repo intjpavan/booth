@@ -1,5 +1,6 @@
 <?php
 include '../inc/db.php';
+include '../inc/mim.php';
 include '../inc/boothnumber.php';
 include 'update.html';
 
