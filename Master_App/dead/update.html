@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booth Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px; /* Limit maximum width */
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label, input[type="number"], select, input[type="submit"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"], select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            form {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booth No</h1>
+        <form action="" method="post">
+            <label for="votersno" >Voter's Number:</label>
+            <input type="hidden" name="boothno" value="<?php echo $boothNumber; ?>">
+            <input type="number" id="votersno" autofocus="autofocus" name="votersno" required><br><br>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="3">Dead Or Removed</option>
+            </select><br><br>
+
+            <input type="submit" value="Update Status">
+        </form>
+    </div>
+
+    <div id="successMessage" class="success-message">Record updated successfully</div>
+
+    <script>
+        function showSuccessMessage() {
+            var message = document.getElementById("successMessage");
+            message.style.display = "block";
+
+            setTimeout(function() {
+                message.style.display = "none";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
