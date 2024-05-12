@@ -1,7 +1,7 @@
 <?php
 // Include the database configuration file
-require_once "db.php";
-require_once "mim.php";
+require_once "../inc/db.php";
+require_once "../inc/mim.php";
 checkBoothNumber($_POST['boothNum']);
 
 

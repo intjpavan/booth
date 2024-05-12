@@ -1,6 +1,6 @@
 <?php
-include 'db.php';
-include 'boothnumber.php';
+include '../inc/db.php';
+include '../inc/boothnumber.php';
 include 'update.html';
 
 // Create connection

@@ -1,7 +1,7 @@
 
 <?php 
 
-$boothNumber = '5';
+$boothNumber = '9999';
 
 /* if (isset($_GET['boothno'])) {
     $boothNumber = $_GET['boothno'];
